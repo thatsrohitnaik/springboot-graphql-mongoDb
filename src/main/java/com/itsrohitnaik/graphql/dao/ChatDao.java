@@ -25,7 +25,7 @@ public class ChatDao implements ChatDaoInterface {
     @Override
     public List<Chat> getAllChat(String senderId, String receiverId) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("senderId").is(senderId).and(receiverId).is(receiverId));
+        query.addCriteria(Criteria.where("senderId").is(senderId).and("receiverId").is(receiverId));
         List<Chat> chats = mongoTemplate.find(query, Chat.class);
         return chats;
     }
