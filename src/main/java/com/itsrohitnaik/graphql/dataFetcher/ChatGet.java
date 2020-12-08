@@ -13,6 +13,6 @@ public class ChatGet implements DataFetcher {
 
     @Override
     public Object get(DataFetchingEnvironment environment) {
-        return chatService.getAllChat(environment.getArgument("senderId"),environment.getArgument("receierId"));
+        return chatService.getAllChat(environment.getArgument("senderId"),environment.getArgument("receiverId"));
     }
 }
