@@ -1,7 +1,7 @@
 package com.itsrohitnaik.graphql.services;
 
-import com.itsrohitnaik.graphql.dataFetcher.AllUsersDataFetcher;
-import com.itsrohitnaik.graphql.dataFetcher.UserDataFetcher;
+import com.itsrohitnaik.graphql.dataFetcher.ChatGet;
+import com.itsrohitnaik.graphql.dataFetcher.ChatInsert;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
@@ -24,10 +24,10 @@ public class GraphqlService {
     Resource resource;
 
     @Autowired
-    AllUsersDataFetcher allUsersDataFetcher;
+    private ChatInsert chatInsert;
 
     @Autowired
-    UserDataFetcher userDataFetcher;
+    private ChatGet chatGet;
 
     private GraphQL graphQL;
 
@@ -43,8 +43,8 @@ public class GraphqlService {
     private RuntimeWiring buildRuntimeWiring() {
         return RuntimeWiring.newRuntimeWiring()
                 .type("Query", typeWiring -> typeWiring
-                        .dataFetcher("allUsers", allUsersDataFetcher)
-                        .dataFetcher("user", userDataFetcher)
+                        .dataFetcher("chatInsert", chatInsert)
+                        .dataFetcher("getChats", chatGet)
                 )
                 .build();
     }

@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UsersController implements UsersControllerInterface {
+public class UsersController {
 
     @Autowired
     GraphqlService graphqlService;
 
     @PostMapping("/graphql")
-    @Override
-    public ResponseEntity<Object> getAllUsers(@RequestBody String query) {
+    public ResponseEntity<Object> graphQL(@RequestBody String query) {
         ExecutionResult execute = graphqlService.getGraphQL().execute(query);
         return new ResponseEntity<>(execute, HttpStatus.OK);
     }

@@ -3,14 +3,14 @@ schema {
 }
 
 type Query {
-    allUsers: [User]
-    user(id: String): User
+    chatInsert(senderId: String, receiverId: String, message: String, id: String) : Chat
+    getChats(senderId: String, receiverId: String) : [Chat]
 }
 
-type User {
-    name: String
-    address: String
+type Chat {
+    senderId: String
+    receiverId: String
+    message: String
     id: String
-    age: Int
 }
 
