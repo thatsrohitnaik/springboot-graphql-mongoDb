@@ -26,8 +26,18 @@ public class ChatDao implements ChatDaoInterface {
     public List<Chat> getAllChat(String senderId, String receiverId) {
         Query query = new Query();
         query.addCriteria(Criteria.where("senderId").is(senderId).and("receiverId").is(receiverId));
-        List<Chat> chats = mongoTemplate.find(query, Chat.class);
+        List<Chat> chats = mongoTemplate.find(query, Chat.class, "chat");
         return chats;
+    }
+
+    @Override
+    public List<Chat> getLastChats(String senderId) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("senderId").is(senderId));
+        List<String> receiverIds = mongoTemplate.findDistinct(query, "receiverId","chat", String.class);
+        query.addCriteria(Criteria.where("senderId").is(senderId).and("receiverId").in(receiverIds));
+       // List<Chat> chats = mongoTemplate.aggregate();
+        return null;
     }
 
     @Override

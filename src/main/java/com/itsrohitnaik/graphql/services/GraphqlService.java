@@ -1,6 +1,7 @@
 package com.itsrohitnaik.graphql.services;
 
 import com.itsrohitnaik.graphql.dataFetcher.ChatGet;
+import com.itsrohitnaik.graphql.dataFetcher.ChatGetLast;
 import com.itsrohitnaik.graphql.dataFetcher.ChatInsert;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
@@ -29,6 +30,9 @@ public class GraphqlService {
     @Autowired
     private ChatGet chatGet;
 
+    @Autowired
+    private ChatGetLast chatGetLast;
+
     private GraphQL graphQL;
 
     @PostConstruct
@@ -45,6 +49,7 @@ public class GraphqlService {
                 .type("Query", typeWiring -> typeWiring
                         .dataFetcher("chatInsert", chatInsert)
                         .dataFetcher("getChats", chatGet)
+                        .dataFetcher("getLastChats", chatGetLast)
                 )
                 .build();
     }

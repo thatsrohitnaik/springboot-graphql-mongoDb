@@ -5,6 +5,7 @@ schema {
 type Query {
     chatInsert(senderId: String, receiverId: String, message: String, id: String) : Chat
     getChats(senderId: String, receiverId: String) : [Chat]
+    getLastChats(senderId:String) : [Chat]
 }
 
 type Chat {

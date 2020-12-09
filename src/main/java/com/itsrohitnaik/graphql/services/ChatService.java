@@ -28,4 +28,9 @@ public class ChatService implements ChatServiceInterface {
         return chatDao.getAllChat(senderId,receiverId);
     }
 
+    @Override
+    public List<Chat> getLastChats(String senderId) {
+        return chatDao.getLastChats(senderId);
+    }
+
 }

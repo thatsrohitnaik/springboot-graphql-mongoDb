@@ -14,6 +14,23 @@ public class Chat {
     String receiverId;
     String message;
     String id;
+    Long time;
+
+    public Long getTime() {
+        return time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
+    }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
 
     public String getId() {
         return id;
@@ -21,14 +38,6 @@ public class Chat {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getSenderName() {
-        return senderId;
-    }
-
-    public void setSenderName(String senderName) {
-        this.senderId = senderName;
     }
 
     public String getReceiverId() {
