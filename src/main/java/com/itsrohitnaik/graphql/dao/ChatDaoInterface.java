@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ChatDaoInterface {
     Chat insertChat(Chat chat);
-    List<Chat> getAllChat(String senderId, String receiverId);
+    List<Chat> getChatBetween(List<String> between);
     void deleteChat(String id);
 }

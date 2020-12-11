@@ -7,5 +7,5 @@ import java.util.List;
 public interface ChatServiceInterface {
     Chat insertChat(Chat chat);
     void deleteChat(String id);
-    List<Chat> getAllChat(String senderId, String receiverId);
+    List<Chat> getChatBetween(List<String> between);
 }

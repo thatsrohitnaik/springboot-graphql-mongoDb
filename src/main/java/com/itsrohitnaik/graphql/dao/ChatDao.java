@@ -22,9 +22,9 @@ public class ChatDao implements ChatDaoInterface {
     }
 
     @Override
-    public List<Chat> getAllChat(String senderId, String receiverId) {
+    public List<Chat> getChatBetween(List<String> between) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("senderId").in(senderId, receiverId).and("receiverId").in(receiverId, senderId));
+        query.addCriteria(Criteria.where("senderId").in(between).and("receiverId").in(between));
         List<Chat> chats = mongoTemplate.find(query, Chat.class, "chat");
         return chats;
     }

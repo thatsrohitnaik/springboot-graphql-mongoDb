@@ -23,8 +23,8 @@ public class ChatService implements ChatServiceInterface {
     }
 
     @Override
-    public List<Chat> getAllChat(String senderId, String receiverId) {
-        return chatDao.getAllChat(senderId,receiverId);
+    public List<Chat> getChatBetween(List<String> between) {
+        return chatDao.getChatBetween(between);
     }
 
 }

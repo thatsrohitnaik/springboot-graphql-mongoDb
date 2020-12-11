@@ -8,6 +8,16 @@
 }
 
 {
+    chatGet(between:["s1","s2"]) {
+    message
+    senderId
+    receiverId
+    time
+    }
+
+}
+
+{
    chatInsert(senderId: "s2", receiverId: "s1", message: "hey ", id: "5", time:1607617144){
      message
      id
