@@ -15,6 +15,6 @@ public class ChatHistory implements DataFetcher {
 
     @Override
     public Object get(DataFetchingEnvironment environment) {
-        return userService.getChatHistory(environment.getArgument("senderId"));
+        return userService.getChatHistory(environment.getArgument("userId"));
     }
 }

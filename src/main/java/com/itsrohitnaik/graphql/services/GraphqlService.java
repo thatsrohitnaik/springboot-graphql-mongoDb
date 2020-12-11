@@ -1,6 +1,6 @@
 package com.itsrohitnaik.graphql.services;
 
-import com.itsrohitnaik.graphql.dataFetcher.ChatGet;
+import com.itsrohitnaik.graphql.dataFetcher.ChatBetween;
 import com.itsrohitnaik.graphql.dataFetcher.ChatHistory;
 import com.itsrohitnaik.graphql.dataFetcher.ChatInsert;
 import com.itsrohitnaik.graphql.dataFetcher.UserInsert;
@@ -32,7 +32,7 @@ public class GraphqlService {
     private ChatInsert chatInsert;
 
     @Autowired
-    private ChatGet chatGet;
+    private ChatBetween chatBetween;
 
     @Autowired
     private ChatHistory chatHistory;
@@ -56,7 +56,7 @@ public class GraphqlService {
         Map<String, DataFetcher> mapOfDatafetchers  = new HashMap<>();
 
         mapOfDatafetchers.put("chatInsert", chatInsert);
-        mapOfDatafetchers.put("chatGet", chatGet);
+        mapOfDatafetchers.put("chatBetween", chatBetween);
         mapOfDatafetchers.put("chatHistory", chatHistory);
         mapOfDatafetchers.put("userInsert", userInsert);
 

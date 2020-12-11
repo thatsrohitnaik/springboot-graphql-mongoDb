@@ -8,7 +8,7 @@
 }
 
 {
-    chatGet(between:["s1","s2"]) {
+    chatBetween(between:["s1","s2"]) {
     message
     senderId
     receiverId

@@ -4,8 +4,8 @@ schema {
 
 type Query {
     chatInsert(senderId: String, receiverId: String, message: String, id: String, time:Int) : Chat
-    chatGet(between: [String]) : [Chat]
-    chatHistory(senderId:String) : [User]
+    chatBetween(between: [String]) : [Chat]
+    chatHistory(userId:String) : [User]
     userInsert(userId: String, userName: String, userImagePath: String, userStatus: String) : User
 }
 

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ChatGet implements DataFetcher {
+public class ChatBetween implements DataFetcher {
     @Autowired
     private ChatService chatService;
 
