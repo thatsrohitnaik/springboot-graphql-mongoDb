@@ -1,20 +1,20 @@
 package com.itsrohitnaik.graphql.dataFetcher;
 
-import com.itsrohitnaik.graphql.dao.ChatDao;
 import com.itsrohitnaik.graphql.services.ChatService;
+import com.itsrohitnaik.graphql.services.UserService;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ChatGetLast implements DataFetcher {
+public class ChatHistory implements DataFetcher {
 
     @Autowired
-    private ChatService chatService;
+    private UserService userService;
 
     @Override
     public Object get(DataFetchingEnvironment environment) {
-        return chatService.getLastChats(environment.getArgument("senderId"));
+        return userService.getChatHistory(environment.getArgument("senderId"));
     }
 }

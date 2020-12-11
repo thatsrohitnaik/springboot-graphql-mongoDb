@@ -1,0 +1,22 @@
+{
+    chatHistory(senderId:"s2") {
+     userId
+     userName
+     userStatus
+     userImagePath
+    }
+}
+
+{
+   chatInsert(senderId: "s2", receiverId: "s1", message: "hey ", id: "5", time:1607617144){
+     message
+     id
+     receiverId
+    }
+}
+
+{
+    userInsert(userId: "s5", userName: "Super Four", userImagePath: "no path", userStatus: "offline") {
+     userId
+    }
+}

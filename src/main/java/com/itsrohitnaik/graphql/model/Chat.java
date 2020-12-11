@@ -1,26 +1,19 @@
 package com.itsrohitnaik.graphql.model;
 
-import org.bson.Document;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
 public class Chat {
 
     String senderId;
     String receiverId;
     String message;
     String id;
-    Long time;
+   // Long time; lets not do this now qraphql doesnt accep long need to pass it as string instead
+    Integer time;
 
-    public Long getTime() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(Long time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 

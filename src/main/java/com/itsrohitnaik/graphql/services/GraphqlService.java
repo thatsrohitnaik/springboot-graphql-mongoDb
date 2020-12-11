@@ -1,9 +1,11 @@
 package com.itsrohitnaik.graphql.services;
 
 import com.itsrohitnaik.graphql.dataFetcher.ChatGet;
-import com.itsrohitnaik.graphql.dataFetcher.ChatGetLast;
+import com.itsrohitnaik.graphql.dataFetcher.ChatHistory;
 import com.itsrohitnaik.graphql.dataFetcher.ChatInsert;
+import com.itsrohitnaik.graphql.dataFetcher.UserInsert;
 import graphql.GraphQL;
+import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
@@ -17,6 +19,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class GraphqlService {
@@ -31,7 +35,10 @@ public class GraphqlService {
     private ChatGet chatGet;
 
     @Autowired
-    private ChatGetLast chatGetLast;
+    private ChatHistory chatHistory;
+
+    @Autowired
+    private UserInsert userInsert;
 
     private GraphQL graphQL;
 
@@ -45,11 +52,17 @@ public class GraphqlService {
     }
 
     private RuntimeWiring buildRuntimeWiring() {
+
+        Map<String, DataFetcher> mapOfDatafetchers  = new HashMap<>();
+
+        mapOfDatafetchers.put("chatInsert", chatInsert);
+        mapOfDatafetchers.put("chatGet", chatGet);
+        mapOfDatafetchers.put("chatHistory", chatHistory);
+        mapOfDatafetchers.put("userInsert", userInsert);
+
         return RuntimeWiring.newRuntimeWiring()
                 .type("Query", typeWiring -> typeWiring
-                        .dataFetcher("chatInsert", chatInsert)
-                        .dataFetcher("getChats", chatGet)
-                        .dataFetcher("getLastChats", chatGetLast)
+                        .dataFetchers(mapOfDatafetchers)
                 )
                 .build();
     }

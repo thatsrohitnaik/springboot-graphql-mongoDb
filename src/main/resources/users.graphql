@@ -3,9 +3,10 @@ schema {
 }
 
 type Query {
-    chatInsert(senderId: String, receiverId: String, message: String, id: String) : Chat
-    getChats(senderId: String, receiverId: String) : [Chat]
-    getLastChats(senderId:String) : [Chat]
+    chatInsert(senderId: String, receiverId: String, message: String, id: String, time:Int) : Chat
+    chatGet(senderId: String, receiverId: String) : [Chat]
+    chatHistory(senderId:String) : [User]
+    userInsert(userId: String, userName: String, userImagePath: String, userStatus: String) : User
 }
 
 type Chat {
@@ -13,5 +14,13 @@ type Chat {
     receiverId: String
     message: String
     id: String
+    time: Int
+}
+
+type User {
+    userId: String
+    userName: String
+    userImagePath: String
+    userStatus: String
 }
 

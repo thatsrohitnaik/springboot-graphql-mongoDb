@@ -1,6 +1,6 @@
 package com.itsrohitnaik.graphql.dataFetcher;
 
-import com.itsrohitnaik.graphql.services.ChatService;
+import com.itsrohitnaik.graphql.services.UserService;
 import com.itsrohitnaik.graphql.util.Mapper;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
@@ -8,16 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ChatInsert implements DataFetcher {
+public class UserInsert implements DataFetcher {
 
     @Autowired
-    Mapper mapper;
+    private Mapper mapper;
 
     @Autowired
-    private ChatService chatService;
+    private UserService userService;
 
     @Override
     public Object get(DataFetchingEnvironment environment) {
-        return chatService.insertChat(mapper.getChat(environment));
+        return userService.insertUser(mapper.getUser(environment));
     }
 }

@@ -20,17 +20,11 @@ public class ChatService implements ChatServiceInterface {
 
     @Override
     public void deleteChat(String id) {
-
     }
 
     @Override
     public List<Chat> getAllChat(String senderId, String receiverId) {
         return chatDao.getAllChat(senderId,receiverId);
-    }
-
-    @Override
-    public List<Chat> getLastChats(String senderId) {
-        return chatDao.getLastChats(senderId);
     }
 
 }
